@@ -1,0 +1,37 @@
+problem link - https://practice.geeksforgeeks.org/problems/two-numbers-with-odd-occurrences5846/1
+
+
+Solution - Correct 
+
+
+
+Solution - Using Map ( used extra space  TLE ) 
+
+class Solution{
+    public:
+    vector<long long int> twoOddNum(long long int arr[], long long int n)  
+    {
+        map<long long int, long long int>m;
+        
+        for(long long int i = 0; i<n; i++){
+            m[arr[i]]++;
+        }
+        
+        vector<long long int>ans;
+        
+        for(auto it = m.begin(); it != m.end(); it++){
+            if(it->second % 2 != 0){
+                ans.push_back(it->first);
+            }
+        }
+        
+        long long int temp = ans[0];
+        ans[0] = ans[1];
+        ans[1] = temp;
+        
+        return ans;
+        
+    }
+};
+
+
