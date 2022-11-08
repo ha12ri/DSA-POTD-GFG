@@ -3,6 +3,42 @@ problem link - https://practice.geeksforgeeks.org/problems/two-numbers-with-odd-
 
 Solution - Correct 
 
+class Solution{
+    public:
+    vector<long long int> twoOddNum(long long int arr[], long long int n)  
+    {
+        long long int xr = 0;
+        vector<long long int>ans;
+        
+        
+        for(long long int i = 0; i<n; i++){
+            xr = xr ^ arr[i];
+        }
+        
+        long long int s = xr & ~(xr-1);
+        
+        long long int val1 = 0, val2 = 0;
+        
+        for(long long int i = 0; i<n; i++){
+            
+            if(s&arr[i]){
+                val1 = val1^arr[i];
+            }else{
+                val2 = val2^arr[i];
+            }
+        }
+        
+        
+        if(val1>val2){
+            ans = { val1,val2 };
+        }
+        else{
+            ans = { val2, val1 };
+        }
+        
+        return ans;
+    }
+};
 
 
 Solution - Using Map ( used extra space  TLE ) 
