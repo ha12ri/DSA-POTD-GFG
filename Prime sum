@@ -1,0 +1,36 @@
+
+Given a number N. Find if it can be expressed as sum of two prime numbers.
+
+Solution - 
+
+class Solution {
+public:
+
+    bool isprime(int num){
+        
+        if(num<=1){
+            return false;
+        }
+        
+        for(int i = 2; i<=sqrt(num); i++){
+            if(num%i == 0){
+                return false;
+            }
+        }
+        return true;
+    }
+    
+    string isSumOfTwo(int n){
+       
+       
+       for(int i = 2; i<= n; i++){
+           if(isprime(i) && isprime(n-i)){
+               return "Yes";
+           }
+       }
+       
+       return "No";
+       
+     
+    }
+};
